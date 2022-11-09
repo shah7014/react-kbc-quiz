@@ -1,8 +1,24 @@
 import React from "react";
 import classes from "./Amount.module.css";
+import prizes from "../assets/prizes";
 
-const Amount = () => {
-  return <div className={classes.amount}></div>;
+const Amount = (props) => {
+  const activeAmountNo = props.currentQuestionNo;
+
+  return (
+    <ul className={classes.amountsList}>
+      {prizes.map((prize, index) => (
+        <li
+          className={`${classes.amount} ${
+            activeAmountNo === index ? classes.active : ""
+          }`}
+        >
+          <span className={classes.index}>{index + 1}</span>
+          <span className={classes.value}>{prize}</span>
+        </li>
+      ))}
+    </ul>
+  );
 };
 
 export default Amount;

@@ -27,7 +27,7 @@ function App() {
   return (
     <div className={classes.container}>
       <Question question={question} onAnswerSubmit={handleSubmitAnswer} />
-      <Amount />
+      <Amount currentQuestionNo={currentQuestionNo} />
     </div>
   );
 }

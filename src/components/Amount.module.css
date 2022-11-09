@@ -1,4 +1,31 @@
-.amount {
+.amountsList {
   flex: 3;
   background-color: navy;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  list-style: none;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.amount {
+  color: white;
+  font-size: 20px;
+  display: flex;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.active {
+  background: teal;
+}
+
+.index {
+  flex: 3;
+}
+
+.value {
+  flex: 9;
 }
