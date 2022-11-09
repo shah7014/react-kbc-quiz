@@ -1,12 +1,12 @@
 .amountsList {
   flex: 3;
-  background-color: navy;
+  background-color: #020230;
   padding-left: 2rem;
   padding-right: 2rem;
   list-style: none;
   display: flex;
   flex-direction: column-reverse;
-  gap: 1rem;
+  gap: 0.5rem;
   justify-content: center;
 }
 

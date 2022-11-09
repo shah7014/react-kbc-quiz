@@ -3,14 +3,14 @@ import classes from "./Amount.module.css";
 import prizes from "../assets/prizes";
 
 const Amount = (props) => {
-  const activeAmountNo = props.currentQuestionNo;
+  const activeQuestionNo = props.currentQuestionNo;
 
   return (
     <ul className={classes.amountsList}>
       {prizes.map((prize, index) => (
         <li
           className={`${classes.amount} ${
-            activeAmountNo === index ? classes.active : ""
+            activeQuestionNo === index ? classes.active : ""
           }`}
         >
           <span className={classes.index}>{index + 1}</span>

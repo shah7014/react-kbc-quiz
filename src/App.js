@@ -1,34 +1,27 @@
 import { useState } from "react";
 import classes from "./App.module.css";
-import Amount from "./components/Amount";
-import Question from "./components/Question";
-import questions from "./assets/questions";
+import PlayingGame from "./pages/PlayingGame";
+import StartGame from "./pages/StartGame";
 
+// 2 states:- "playing", "start", "over"
 function App() {
-  const [currentQuestionNo, setCurrentQuestionNo] = useState(0);
+  const [gameState, setGameState] = useState("start");
 
-  const question = questions[currentQuestionNo];
+  const playGameHandler = () => {
+    setGameState("playing");
+  };
 
-  const handleSubmitAnswer = (answer) => {
-    const correctAnswerNo = questions[currentQuestionNo].correctAnswer;
-    const correctAnswer = questions[currentQuestionNo][correctAnswerNo];
-    if (answer !== correctAnswer) {
-      // end the game
-    }
-    if (correctAnswer === answer) {
-      if (currentQuestionNo !== questions.length - 1) {
-        setCurrentQuestionNo((prev) => prev + 1);
-      } else {
-        // end the game
-      }
-    }
+  const overGameHandler = () => {
+    setGameState("over");
   };
 
   return (
-    <div className={classes.container}>
-      <Question question={question} onAnswerSubmit={handleSubmitAnswer} />
-      <Amount currentQuestionNo={currentQuestionNo} />
-    </div>
+    <>
+      {gameState === "start" && <StartGame onPlayGame={playGameHandler} />}
+      {gameState === "playing" && (
+        <PlayingGame onTimeOver={() => setGameState("start")} />
+      )}
+    </>
   );
 }
 
