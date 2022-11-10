@@ -1,31 +1,35 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
+import questions from "../assets/questions";
 import classes from "./Question.module.css";
 import Timer from "./Timer";
 
 const Question = (props) => {
-  const question = props.question;
+  const questionData = questions[props.currentQuestionNo];
 
-  const op1Ref = useRef();
-  const op2Ref = useRef();
-  const op3Ref = useRef();
-  const op4Ref = useRef();
+  const [chosenAnswer, setChosenAnswer] = useState(null);
 
-  const handleSubmitAnswer = (answer, selectedDivRef) => {
-    const correctAnswer = question[question.correctAnswer];
-    if (answer === correctAnswer) {
-      selectedDivRef.current.classList.add(classes.correct);
-    } else {
-      selectedDivRef.current.classList.add(classes.wrong);
-    }
-    props.isAnswerCorrect(answer);
+  const [selectedOptionClass, setSelectedOptionClass] = useState(
+    classes.option
+  );
+
+  useEffect(() => {
+    setChosenAnswer(null);
+    setSelectedOptionClass(classes.option);
+  }, [props.currentQuestionNo]);
+
+  const handleSubmitAnswer = (answer) => {
+    setChosenAnswer(answer);
+    setSelectedOptionClass(`${classes.option} ${classes.active}`);
+    setTimeout(() => {
+      setSelectedOptionClass(
+        answer.isCorrect
+          ? `${classes.option} ${classes.correct}`
+          : `${classes.option} ${classes.wrong}`
+      );
+
+      // props.isAnswerCorrect(answer.isCorrect);
+    }, 3000);
   };
-
-  // useEffect(() => {
-  //   for (let ref of [op1Ref, op2Ref, op3Ref, op4Ref]) {
-  //     ref.current.classList.remove(classes.correct);
-  //     ref.current.classList.remove(classes.wrong);
-  //   }
-  // }, [op1Ref, op2Ref, op3Ref, op4Ref]);
 
   return (
     <div className={classes.container}>
@@ -33,37 +37,20 @@ const Question = (props) => {
       <Timer className={classes.timerContainer} />
 
       <div className={classes.questionContainer}>
-        <span className={classes.question}>{question.question}</span>
+        <span className={classes.question}>{questionData.question}</span>
 
         <div className={classes.options}>
-          <div
-            className={`${classes.option}`}
-            ref={op1Ref}
-            onClick={() => handleSubmitAnswer(question.op1, op1Ref)}
-          >
-            {question.op1}
-          </div>
-          <div
-            className={classes.option}
-            ref={op2Ref}
-            onClick={() => handleSubmitAnswer(question.op2, op2Ref)}
-          >
-            {question.op2}
-          </div>
-          <div
-            className={classes.option}
-            ref={op3Ref}
-            onClick={() => handleSubmitAnswer(question.op3, op3Ref)}
-          >
-            {question.op3}
-          </div>
-          <div
-            className={classes.option}
-            ref={op4Ref}
-            onClick={() => handleSubmitAnswer(question.op4, op4Ref)}
-          >
-            {question.op4}
-          </div>
+          {questionData.options.map((option, index) => (
+            <div
+              key={index}
+              className={
+                chosenAnswer === option ? selectedOptionClass : classes.option
+              }
+              onClick={() => handleSubmitAnswer(option)}
+            >
+              {option.text}
+            </div>
+          ))}
         </div>
       </div>
     </div>

@@ -7,8 +7,6 @@ import questions from "../assets/questions";
 const PlayingGame = (props) => {
   const [currentQuestionNo, setCurrentQuestionNo] = useState(0);
 
-  const question = questions[currentQuestionNo];
-
   const handleAnswer = (isAnswerCorrect) => {
     if (!isAnswerCorrect) {
       // end the game
@@ -16,9 +14,8 @@ const PlayingGame = (props) => {
     }
     if (isAnswerCorrect) {
       if (currentQuestionNo !== questions.length - 1) {
-        setTimeout(() => {
-          setCurrentQuestionNo((prev) => prev + 1);
-        }, 4000);
+        // proceed to next question
+        setCurrentQuestionNo((prev) => prev + 1);
       } else {
         // end the game
         props.onSuccessEndTheGame();
@@ -28,7 +25,10 @@ const PlayingGame = (props) => {
 
   return (
     <div className={classes.container}>
-      <Question question={question} isAnswerCorrect={handleAnswer} />
+      <Question
+        currentQuestionNo={currentQuestionNo}
+        isAnswerCorrect={handleAnswer}
+      />
       <AmountPyramid currentQuestionNo={currentQuestionNo} />
     </div>
   );

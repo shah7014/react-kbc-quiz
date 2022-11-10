@@ -1,35 +1,48 @@
 const questions = [
   {
-    question: "Whats your name",
-    op1: "ramy",
-    op2: "samy",
-    op3: "kamy",
-    op4: "romil",
-    correctAnswer: "op4",
+    question: "Whats the capital of pakistan?",
+    options: [
+      { text: "islamabad", isCorrect: true },
+      { text: "lahore", isCorrect: false },
+      { text: "karachi", isCorrect: false },
+      { text: "rawalpindi", isCorrect: false },
+    ],
   },
   {
-    question: "Whats your age",
-    op1: "1",
-    op2: "2",
-    op3: "26",
-    op4: "9",
-    correctAnswer: "op3",
+    question: "Whats the capital of china?",
+    options: [
+      { text: "shanghai", isCorrect: false },
+      { text: "beijing", isCorrect: true },
+      { text: "wuhan", isCorrect: false },
+      { text: "nanjing", isCorrect: false },
+    ],
   },
   {
-    question: "Whats your passtime",
-    op1: "study",
-    op2: "donghua",
-    op3: "play",
-    op4: "shdfk",
-    correctAnswer: "op2",
+    question: "Whats the capital of japan?",
+    options: [
+      { text: "hiroshima", isCorrect: false },
+      { text: "nagasaki", isCorrect: false },
+      { text: "tokyo", isCorrect: true },
+      { text: "saitama", isCorrect: false },
+    ],
   },
   {
-    question: "Whats your way of work",
-    op1: "wfh",
-    op2: "onsite",
-    op3: "hybrid",
-    op4: "lsjglj",
-    correctAnswer: "op1",
+    question: "Whats the capital of korea?",
+    options: [
+      { text: "busan", isCorrect: false },
+      { text: "incheon", isCorrect: false },
+      { text: "jeju island", isCorrect: false },
+      { text: "seoul", isCorrect: true },
+    ],
+  },
+  {
+    question: "Whats the capital of england?",
+    options: [
+      { text: "liverpool", isCorrect: false },
+      { text: "manchester", isCorrect: false },
+      { text: "london", isCorrect: true },
+      { text: "nottingham", isCorrect: false },
+    ],
   },
 ];
 
