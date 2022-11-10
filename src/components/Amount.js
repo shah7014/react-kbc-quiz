@@ -9,6 +9,7 @@ const Amount = (props) => {
     <ul className={classes.amountsList}>
       {prizes.map((prize, index) => (
         <li
+          key={index}
           className={`${classes.amount} ${
             activeQuestionNo === index ? classes.active : ""
           }`}

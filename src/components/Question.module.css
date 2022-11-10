@@ -43,3 +43,8 @@
 .option:hover {
   background: navy;
 }
+/* 
+.blinking {
+  animation: blinkingBG timing-function delay iteration-count direction
+    fill-mode;
+} */
