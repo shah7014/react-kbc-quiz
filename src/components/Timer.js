@@ -11,12 +11,16 @@ const Timer = (props) => {
     return () => {
       if (timeRem === 0) {
         clearTimeout(timerId);
-        props.onTimeOver();
+        // props.onTimeOver();
       }
     };
   }, [timeRem, props]);
 
-  return <div className={classes.timerContainer}>{timeRem}</div>;
+  return (
+    <div className={`${props.className} ${classes.timerContainer}`}>
+      <div className={classes.timer}>{timeRem}</div>
+    </div>
+  );
 };
 
 export default Timer;

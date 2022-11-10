@@ -7,7 +7,7 @@ import GameOver from "./pages/GameOver";
 
 // 2 states:- "playing", "start", "over"
 function App() {
-  const [gameState, setGameState] = useState("start");
+  const [gameState, setGameState] = useState("playing");
 
   const [prizeWon, setPrizeWon] = useState(0);
 

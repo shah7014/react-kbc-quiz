@@ -1,6 +1,17 @@
 .timerContainer {
-  padding: 1rem;
-  border: 1px solid white;
+  display: flex;
+  flex-direction: column-reverse;
+  padding-left: 100px;
+}
+
+.timer {
+  height: 70px;
+  width: 70px;
+  border: 2px solid white;
   border-radius: 50%;
   color: white;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

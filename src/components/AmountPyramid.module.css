@@ -1,13 +1,15 @@
 .amountsList {
   flex: 3;
+  height: 100%;
   background-color: #020230;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  /* padding-left: 2rem; */
+  /* padding-right: 2rem; */
   list-style: none;
   display: flex;
   flex-direction: column-reverse;
   gap: 0.5rem;
   justify-content: center;
+  align-items: center;
 }
 
 .amount {
@@ -16,6 +18,7 @@
   display: flex;
   border-radius: 5px;
   padding: 5px;
+  width: 80%;
 }
 
 .active {

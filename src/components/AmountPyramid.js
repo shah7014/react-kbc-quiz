@@ -1,8 +1,8 @@
 import React from "react";
-import classes from "./Amount.module.css";
+import classes from "./AmountPyramid.module.css";
 import prizes from "../assets/prizes";
 
-const Amount = (props) => {
+const AmountPyramid = (props) => {
   const activeQuestionNo = props.currentQuestionNo;
 
   return (
@@ -22,4 +22,4 @@ const Amount = (props) => {
   );
 };
 
-export default Amount;
+export default AmountPyramid;
