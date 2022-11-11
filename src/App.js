@@ -4,10 +4,12 @@ import StartGame from "./pages/StartGame";
 
 // 2 states:- "playing", "start"
 function App() {
-  const [gameState, setGameState] = useState("playing");
+  const [gameState, setGameState] = useState("start");
+  const [userName, setUserName] = useState(null);
 
-  const playGameHandler = () => {
+  const playGameHandler = (name) => {
     setGameState("playing");
+    setUserName(name);
   };
 
   const startGameHandler = () => {

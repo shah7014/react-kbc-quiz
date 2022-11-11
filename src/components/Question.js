@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import questions from "../assets/questions";
 import classes from "./Question.module.css";
 import Timer from "./Timer";
+import useSound from "use-sound";
+import correct from "../assets/sounds/correct.mp3";
+import wrong from "../assets/sounds/wrong.mp3";
 
 const Question = (props) => {
   const questionData = questions[props.currentQuestionNo];
@@ -13,6 +16,9 @@ const Question = (props) => {
   );
 
   const [stopTheTimer, setStopTheTimer] = useState(false);
+
+  const [correctSound] = useSound(correct);
+  const [wrongSound] = useSound(wrong);
 
   // resetting them whenever we move to next question
   useEffect(() => {
@@ -33,7 +39,11 @@ const Question = (props) => {
       );
 
       setTimeout(() => {
-        props.isAnswerCorrect(answer.isCorrect);
+        answer.isCorrect ? correctSound() : wrongSound();
+        // wait again for 3s animation blinking to finish and 1 s for sound
+        setTimeout(() => {
+          props.isAnswerCorrect(answer.isCorrect);
+        }, 1000);
       }, 3000);
     }, 3000);
   };

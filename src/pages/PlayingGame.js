@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./PlayingGame.module.css";
 import Question from "../components/Question";
 import AmountPyramid from "../components/AmountPyramid";
 import questions from "../assets/questions";
 import prizes from "../assets/prizes";
+import useSound from "use-sound";
+import play from "../assets/sounds/play.mp3";
 
 const PlayingGame = (props) => {
   const [currentQuestionNo, setCurrentQuestionNo] = useState(0);
@@ -11,6 +13,12 @@ const PlayingGame = (props) => {
   const [prizeWon, setPrizeWon] = useState(0);
 
   const [gameInProgress, setGameInProgress] = useState(true);
+
+  const [playSound] = useSound(play);
+
+  useEffect(() => {
+    playSound();
+  }, [playSound]);
 
   const updatePrizeMoney = (questionNo) => {
     let prize = 0;

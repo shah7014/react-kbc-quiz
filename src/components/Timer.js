@@ -14,13 +14,13 @@ const Timer = ({ className, questionNo, onTimeOver, stopTimer }) => {
       if (timeRem === 0) {
         onTimeOver();
       } else {
-        timerId = setTimeout(() => {
+        timerId = setInterval(() => {
           setTimeRem((prev) => prev - 1);
         }, 1000);
       }
     }
 
-    return () => clearTimeout(timerId);
+    return () => clearInterval(timerId);
   }, [timeRem, onTimeOver, stopTimer]);
 
   return (
