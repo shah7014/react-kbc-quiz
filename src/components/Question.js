@@ -12,14 +12,18 @@ const Question = (props) => {
     classes.option
   );
 
+  const [stopTheTimer, setStopTheTimer] = useState(false);
+
   // resetting them whenever we move to next question
   useEffect(() => {
     setChosenAnswer(null);
     setSelectedOptionClass(classes.option);
+    setStopTheTimer(false);
   }, [props.currentQuestionNo]);
 
   const handleSubmitAnswer = (answer) => {
     setChosenAnswer(answer);
+    setStopTheTimer(true);
     setSelectedOptionClass(`${classes.option} ${classes.active}`);
     setTimeout(() => {
       setSelectedOptionClass(
@@ -40,6 +44,7 @@ const Question = (props) => {
         className={classes.timerContainer}
         questionNo={props.currentQuestionNo}
         onTimeOver={props.onTimeOver}
+        stopTimer={stopTheTimer}
       />
 
       <div className={classes.questionContainer}>

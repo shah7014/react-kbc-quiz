@@ -60,8 +60,12 @@ const PlayingGame = (props) => {
           />
         ) : (
           <>
-            <span>You have won {prizeWon} amount</span>
-            <button onClick={props.onStartGame}>Play again</button>
+            <span className={classes.prize}>
+              You have won {prizeWon} amount
+            </span>
+            <button onClick={props.onStartGame} className={classes.btn}>
+              Play again
+            </button>
           </>
         )}
       </div>

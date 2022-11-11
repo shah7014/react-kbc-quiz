@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import classes from "./Timer.module.css";
 
-const Timer = ({ className, questionNo, onTimeOver }) => {
+const Timer = ({ className, questionNo, onTimeOver, stopTimer }) => {
   const [timeRem, setTimeRem] = useState(20);
 
   useEffect(() => {
@@ -10,16 +10,18 @@ const Timer = ({ className, questionNo, onTimeOver }) => {
 
   useEffect(() => {
     let timerId;
-    if (timeRem === 0) {
-      onTimeOver();
-    } else {
-      timerId = setTimeout(() => {
-        setTimeRem((prev) => prev - 1);
-      }, 1000);
+    if (!stopTimer) {
+      if (timeRem === 0) {
+        onTimeOver();
+      } else {
+        timerId = setTimeout(() => {
+          setTimeRem((prev) => prev - 1);
+        }, 1000);
+      }
     }
 
     return () => clearTimeout(timerId);
-  }, [timeRem, onTimeOver]);
+  }, [timeRem, onTimeOver, stopTimer]);
 
   return (
     <div className={`${className} ${classes.timerContainer}`}>
