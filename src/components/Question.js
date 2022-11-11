@@ -12,6 +12,7 @@ const Question = (props) => {
     classes.option
   );
 
+  // resetting them whenever we move to next question
   useEffect(() => {
     setChosenAnswer(null);
     setSelectedOptionClass(classes.option);
@@ -27,14 +28,19 @@ const Question = (props) => {
           : `${classes.option} ${classes.wrong}`
       );
 
-      // props.isAnswerCorrect(answer.isCorrect);
+      setTimeout(() => {
+        props.isAnswerCorrect(answer.isCorrect);
+      }, 3000);
     }, 3000);
   };
 
   return (
-    <div className={classes.container}>
-      {/* <Timer onTimeOver={props.onTimeOver} /> */}
-      <Timer className={classes.timerContainer} />
+    <>
+      <Timer
+        className={classes.timerContainer}
+        questionNo={props.currentQuestionNo}
+        onTimeOver={props.onTimeOver}
+      />
 
       <div className={classes.questionContainer}>
         <span className={classes.question}>{questionData.question}</span>
@@ -53,7 +59,7 @@ const Question = (props) => {
           ))}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
